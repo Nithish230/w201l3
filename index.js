@@ -1,37 +1,37 @@
 const todoList = () => {
-    tap = []
-    const add_something = (todoItem) => {
-      tap.push(todoItem)
+    all = []
+    const add = (todoItem) => {
+      all.push(todoItem)
     }
-    const markcomplete = (index) => {
-      tap[index].completed = true
+    const markAsComplete = (index) => {
+      all[index].completed = true
     }
   
-    const od = () => {
-      // Write the date check condition here and return the array of od items accordingly.
+    const overdue = () => {
+      // Write the date check condition here and return the array of overdue items accordingly.
       // FILL YOUR CODE HERE
       // ..
       // ..
       // ..
-      return tap.filter((item)=> item.dueDate<new Date().toLocaleDateString("en-CA"));
+      return all.filter((item)=> item.dueDate<new Date().toLocaleDateString("en-CA"));
     }
   
-    const dueT = () => {
+    const dueToday = () => {
       // Write the date check condition here and return the array of todo items that are due today accordingly.
       // FILL YOUR CODE HERE
       // ..
       // ..
       // ..
-      return tap.filter((item)=> item.dueDate==new Date().toLocaleDateString("en-CA"));
+      return all.filter((item)=> item.dueDate==new Date().toLocaleDateString("en-CA"));
     }
   
-    const dueLa = () => {
+    const dueLater = () => {
       // Write the date check condition here and return the array of todo items that are due later accordingly.
       // FILL YOUR CODE HERE
       // ..
       // ..
       // ..
-      return tap.filter((item)=> item.dueDate>new Date().toLocaleDateString("en-CA"));
+      return all.filter((item)=> item.dueDate>new Date().toLocaleDateString("en-CA"));
     }
   
     const toDisplayableList = (list) => {
@@ -52,7 +52,7 @@ const todoList = () => {
     return res;
     }
   
-    return { tap, add_something, markcomplete, od, dueT, dueLa, toDisplayableList };
+    return { all, add, markAsComplete, overdue, dueToday, dueLater, toDisplayableList };
   }
   
   // ####################################### #
@@ -74,28 +74,28 @@ const todoList = () => {
     new Date(new Date().setDate(dateToday.getDate() + 1))
   )
   
-  todos.add_something({ title: 'Submit assignment', dueDate: yesterday, completed: false })
-  todos.add_something({ title: 'Pay rent', dueDate: today, completed: true })
-  todos.add_something({ title: 'Service Vehicle', dueDate: today, completed: false })
-  todos.add_something({ title: 'File taxes', dueDate: tomorrow, completed: false })
-  todos.add_something({ title: 'Pay electric bill', dueDate: tomorrow, completed: false })
+  todos.add({ title: 'Submit assignment', dueDate: yesterday, completed: false })
+  todos.add({ title: 'Pay rent', dueDate: today, completed: true })
+  todos.add({ title: 'Service Vehicle', dueDate: today, completed: false })
+  todos.add({ title: 'File taxes', dueDate: tomorrow, completed: false })
+  todos.add({ title: 'Pay electric bill', dueDate: tomorrow, completed: false })
   
   console.log("My Todo-list\n\n")
   
-  console.log("od")
-  var ods = todos.od()
-  var formattedods = todos.toDisplayableList(ods)
-  console.log(formattedods)
+  console.log("Overdue")
+  var overdues = todos.overdue()
+  var formattedOverdues = todos.toDisplayableList(overdues)
+  console.log(formattedOverdues)
   console.log("\n\n")
   
   console.log("Due Today")
-  let itemsdueT = todos.dueT()
-  let formattedItemsdueT = todos.toDisplayableList(itemsdueT)
-  console.log(formattedItemsdueT)
+  let itemsDueToday = todos.dueToday()
+  let formattedItemsDueToday = todos.toDisplayableList(itemsDueToday)
+  console.log(formattedItemsDueToday)
   console.log("\n\n")
   
   console.log("Due Later")
-  let itemsdueLa = todos.dueLa()
-  let formattedItemsdueLa = todos.toDisplayableList(itemsdueLa)
-  console.log(formattedItemsdueLa)
+  let itemsDueLater = todos.dueLater()
+  let formattedItemsDueLater = todos.toDisplayableList(itemsDueLater)
+  console.log(formattedItemsDueLater)
   console.log("\n\n")
